@@ -34,8 +34,10 @@ every flow is clickable without external services.
 cd reviewdoor
 npm install
 npm run dev        # http://localhost:5173
-# or production:
-npm run build && npm run preview
+
+# Production build (code-split: vendor-charts / vendor-motion / vendor-router chunks)
+npm run build      # type-checks with tsc, then bundles to dist/
+npm run preview    # serves dist/ at http://localhost:4173
 ```
 
 ## Demo accounts & data
