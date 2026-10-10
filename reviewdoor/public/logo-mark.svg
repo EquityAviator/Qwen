@@ -1,0 +1,18 @@
+<svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rd-door" x1="8" y1="6" x2="36" y2="38" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B5B57"/>
+      <stop offset="1" stop-color="#004643"/>
+    </linearGradient>
+  </defs>
+  <!-- rounded badge -->
+  <rect x="1" y="1" width="42" height="42" rx="12" fill="#0C1618"/>
+  <rect x="1" y="1" width="42" height="42" rx="12" stroke="#D1AC00" stroke-opacity="0.35" stroke-width="1.2"/>
+  <!-- doorway arch (the "door" that a scan walks through) -->
+  <path d="M13 36V20a9 9 0 0 1 18 0v16h-4.2V20.5a4.8 4.8 0 0 0-9.6 0V36H13Z" fill="url(#rd-door)"/>
+  <!-- keystone / scanning dot -->
+  <circle cx="22" cy="11.2" r="2.6" fill="#F6BE9A"/>
+  <!-- QR finder square inside the door = destination -->
+  <rect x="18.4" y="23.4" width="7.2" height="7.2" rx="1.6" stroke="#FAF4D3" stroke-width="1.8" fill="none"/>
+  <rect x="20.8" y="25.8" width="2.4" height="2.4" rx="0.6" fill="#D1AC00"/>
+</svg>
