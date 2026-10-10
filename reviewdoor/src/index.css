@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  @apply bg-cream text-ink font-sans antialiased;
+  font-feature-settings: 'ss01', 'cv01';
+}
+
+::selection { background: #D1AC00; color: #0C1618; }
+
+/* subtle paper grain over cream canvas — warmth without noise */
+.grain::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 5;
+  opacity: .035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* dotted teal backdrop used in hero panels */
+.dotgrid {
+  background-image: radial-gradient(rgba(0,70,67,.14) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-bold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 ring-offset-cream disabled:opacity-40 disabled:pointer-events-none select-none;
+  }
+  .btn-primary { @apply btn bg-teal text-cream hover:bg-teal-soft active:scale-[.98]; box-shadow: 0 8px 24px -10px rgba(0,70,67,.45); }
+  .btn-secondary { @apply btn border-2 border-teal/25 text-teal hover:border-teal hover:bg-teal/5; }
+  .btn-ghost { @apply btn text-ink/70 hover:text-ink hover:bg-ink/5; }
+  .btn-gold { @apply btn bg-gold text-ink hover:brightness-105 active:scale-[.98]; box-shadow: 0 8px 24px -10px rgba(209,172,0,.55); }
+  .btn-danger { @apply btn bg-red-700/90 text-white hover:bg-red-700; }
+  .btn-sm { @apply px-3 py-1.5 text-xs rounded-lg; }
+
+  .card { @apply bg-white/80 backdrop-blur-[2px] border border-ink/8 rounded-xl2 shadow-card; }
+  .card-solid { @apply bg-white border border-ink/8 rounded-xl2 shadow-card; }
+
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold leading-none; }
+  .chip-teal   { @apply chip bg-teal/10 text-teal ring-1 ring-inset ring-teal/25; }
+  .chip-gold   { @apply chip bg-gold/15 text-gold-deep ring-1 ring-inset ring-gold/40; }
+  .chip-peach  { @apply chip bg-peach/25 text-[#9A5B33] ring-1 ring-inset ring-peach; }
+  .chip-danger { @apply chip bg-red-50 text-red-800 ring-1 ring-inset ring-red-200; }
+  .chip-neutral{ @apply chip bg-ink/6 text-ink/70 ring-1 ring-inset ring-ink/10; }
+
+  .input {
+    @apply w-full rounded-xl border-2 border-ink/12 bg-white px-3.5 py-2.5 text-sm placeholder:text-ink/35
+    focus:border-teal focus:outline-none focus:ring-4 focus:ring-teal/10 transition;
+  }
+  .label { @apply block text-xs font-extrabold uppercase tracking-wider text-ink/55 mb-1.5; }
+  .help  { @apply mt-1.5 text-xs text-ink/50; }
+
+  .kicker { @apply inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.18em] text-teal; }
+  .display { @apply font-display font-semibold tracking-tight text-ink; }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-bold text-ink/60
+    hover:text-ink hover:bg-ink/5 transition-colors;
+  }
+  .sidebar-link-active {
+    @apply flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-bold bg-teal text-cream shadow-lift;
+  }
+
+  .table-th { @apply px-4 py-3 text-left text-[11px] font-extrabold uppercase tracking-wider text-ink/50 bg-cream-soft sticky top-0 z-10 border-b border-ink/8; }
+  .table-td { @apply px-4 py-3.5 text-sm border-b border-ink/6 align-top; }
+}
+
+/* thin elegant scrollbars */
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: rgba(0,70,67,.18); border-radius: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* QR corner brackets decoration */
+.qr-frame { position: relative; }
+.qr-frame::before, .qr-frame::after,
+.qr-frame > .brk::before, .qr-frame > .brk::after {
+  content: ''; position: absolute; width: 22px; height: 22px; border: 3px solid #004643; border-radius: 6px;
+}
+.qr-frame::before { top: -6px; left: -6px; border-right: 0; border-bottom: 0; }
+.qr-frame::after { top: -6px; right: -6px; border-left: 0; border-bottom: 0; }
+.qr-frame > .brk::before { bottom: -6px; left: -6px; border-right: 0; border-top: 0; }
+.qr-frame > .brk::after { bottom: -6px; right: -6px; border-left: 0; border-top: 0; }
+
+@media print { .no-print { display: none !important; } }
