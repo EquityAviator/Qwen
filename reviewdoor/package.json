@@ -6,26 +6,46 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:server": "tsc -p server/tsconfig.json",
+    "start": "RD_DATA_DIR=.data node dist-server/api.js",
+    "dev:full": "npm run build:server && (node dist-server/api.js & vite)",
+    "test": "vitest run"
   },
   "dependencies": {
+    "@types/multer": "^2.3.0",
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^12.11.1",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.3.0",
     "framer-motion": "^11.11.9",
+    "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.453.0",
+    "multer": "^2.4.0",
     "qrcode.react": "^4.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
     "recharts": "^2.12.7",
+    "zod": "^4.6.5",
     "zustand": "^5.0.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
+    "@types/supertest": "^7.2.1",
     "@vitejs/plugin-react": "^4.3.2",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
+    "supertest": "^7.3.1",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2",
-    "vite": "^5.4.8"
+    "vite": "^5.4.8",
+    "vitest": "^4.1.11"
   }
 }
